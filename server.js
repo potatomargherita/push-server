@@ -155,3 +155,24 @@ app.get("/morning", async (req, res) => {
     res.status(500).send("ERROR");
   }
 });
+
+app.post("/api/absence", async (req, res) => {
+  const data = req.body;
+
+  try {
+    // GASに送る
+    await fetch("https://script.google.com/macros/s/AKfycbyBZLegcV8mJ_JXGzvTZ9kC2Q3p3BAqQb80chNl9SEIYyZvUFVi3WXHXGtnZU8j3DeO/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    res.send("OK");
+
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("ERROR");
+  }
+});
