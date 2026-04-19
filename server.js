@@ -21,6 +21,7 @@ const db = admin.firestore();
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public"));
 
 // VAPIDキー
 const publicKey = "BI3cHWxxzzPjgEI7V4Nw5HIA0lrFWK3PFw0a2LR8qMRIg26GLru9R3jefP15ZJNjVMj9zu_JLkO_2O_knVNd5bI";
