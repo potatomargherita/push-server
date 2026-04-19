@@ -182,3 +182,7 @@ app.post("/api/absence", async (req, res) => {
     res.status(500).send("ERROR");
   }
 });
+
+app.get("/wake", (req, res) => {
+  res.status(200).send("awake");
+});
