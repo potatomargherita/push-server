@@ -160,7 +160,7 @@ app.post("/api/absence", async (req, res) => {
   const data = req.body;
 
   try {
-    // GASに送る
+    // GASに保存
     await fetch("https://script.google.com/macros/s/AKfycbyBZLegcV8mJ_JXGzvTZ9kC2Q3p3BAqQb80chNl9SEIYyZvUFVi3WXHXGtnZU8j3DeO/exec", {
       method: "POST",
       headers: {
@@ -168,6 +168,12 @@ app.post("/api/absence", async (req, res) => {
       },
       body: JSON.stringify(data)
     });
+
+    // 🔥 ここ追加（通知）
+    await sendAll(
+      "欠席連絡",
+      `${data.grade}${data.name}が${data.date}に${data.status}`
+    );
 
     res.send("OK");
 
