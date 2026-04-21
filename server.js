@@ -164,7 +164,7 @@ app.post("/api/absence", async (req, res) => {
     // 🔥 ここ追加（通知）
     await sendAll(
       "欠席連絡",
-      `${data.grade}${data.name}が${data.date}に${data.status}`
+      `${data.grade}${data.name}さんが${data.date}に${data.status}します`
     );
 
     res.send("OK");
