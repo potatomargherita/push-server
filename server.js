@@ -110,14 +110,6 @@ async function sendMorningAbsence() {
   await sendAll("朝の欠席情報", body);
 }
 
-cron.schedule("0 7 * * *", async () => {
-  console.log("朝の自動通知");
-
-  await sendMorningAbsence();
-
-}, {
-  timezone: "Asia/Tokyo"
-});
 
 async function sendAll(title, body) {
   const snapshot = await db.collection("subs").get();
